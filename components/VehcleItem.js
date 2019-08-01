@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-import {View, Text , TouchableOpacity ,StyleSheet} from  'react-native'
+import {View, Image, Text , TouchableOpacity ,StyleSheet} from  'react-native'
 import {Ionicons} from '@expo/vector-icons'
 
 export default class VehcleItem extends Component {
@@ -7,9 +7,20 @@ export default class VehcleItem extends Component {
     render(){
         return (
             <TouchableOpacity
+                style = {styles.container}
                 onPress = {this.props.onPress}
             >
-
+                <Image 
+                    source = {{
+                        uri : this.props.image
+                    }}
+                />
+                <View style = {{flexDirection:'column'}} >
+                    <Text style = {{fontSize:22,color:'#333',fontWeight:'400' }}>
+                        {this.props.vin}
+                    </Text>
+                    
+                </View>
             </TouchableOpacity>
         )
     }
