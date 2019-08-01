@@ -10,7 +10,7 @@ export default class VehcleItem extends Component {
                 style = {styles.container}
                 onPress = {this.props.onPress}
             >
-                <Image 
+                <Image style={styles.image}
                     source = {{
                         uri : this.props.image
                     }}
@@ -19,7 +19,20 @@ export default class VehcleItem extends Component {
                     <Text style = {{fontSize:22,color:'#333',fontWeight:'400' }}>
                         {this.props.vin}
                     </Text>
-                    
+                    <View style = {{flexDirection:'row', alignItems:'center'}}>
+                        <Ionicons 
+                            style={{marginRight:5}}
+                            color = {'#666'}
+                            size = {15}
+                            name = {'ios-calendar'}
+                            />
+                        <Text style ={{fontSize:12 , color:'#333',fontWeight:'300'}}>
+                            {this.props.manufacturer}
+                        </Text>
+                        <Text style={{marginLeft:5, fontSize:12 , color:'#666',fontWeight:'400'}}>
+                            {this.props.year}
+                        </Text>
+                    </View>
                 </View>
             </TouchableOpacity>
         )
