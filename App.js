@@ -7,7 +7,7 @@ import AuctionListScreen from './screens/AuctionListScreen';
 export default function App() {
 
   return (
-    <View style = {styles.container}>
+    <View>
       
       <AuctionListScreen />
     </View>
