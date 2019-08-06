@@ -2,7 +2,7 @@ import React , {Component} from 'react';
 import {View, Image, Text , TouchableOpacity ,StyleSheet} from  'react-native'
 import {Ionicons} from '@expo/vector-icons'
 
-export default class VehcleItem extends Component {
+export default class VehicleItem extends Component {
     
     render(){
         return (

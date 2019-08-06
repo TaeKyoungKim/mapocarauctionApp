@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text , TouchableOpacity , FlatList , StyleSheet} from 'react-native';
 import {SimpleLineIcons} from '@expo/vector-icons'
-import VehicleItem from '../components/VehcleItem'
+import VehicleItem from '../components/VehicleItem'
 
 const mockData = [
   {
@@ -44,10 +44,47 @@ static navigationOptions = ({navigation})=>{
    title : 'My Cars'   
   }
 }
+
+refreshData =()=>{
+
+}
+
+renderItem=({item})=>{
+  return (
+    <VehicleItem 
+    {...item }
+    onPress={()=>{
+      this.props.navigation.navigate('VehicleDetail' ,{
+        vehicle:item ,
+        title:item.model
+      })
+    }}
+    />
+  )
+}
+
   render() {
     return (
       <View>
-        <Text> MyVechicleScreen </Text>
+        <FlatList 
+          data={mockData}
+          renderItem = {this.renderItem}
+          onRefresh = {this.refreshData}
+          refreshing ={this.state.refreshing}
+          keyExtractor={(item ,index)=>item.vin}
+          ItemSeparatorComponent = {
+            ()=>(
+              <View 
+                style={{
+                  height:StyleSheet.hairlineWidth,
+                  marginLeft:20 ,
+                  width : '100%',
+                  backgroundColor : 'gray'
+                }}
+              />
+
+            )}
+        />
       </View>
     );
   }
