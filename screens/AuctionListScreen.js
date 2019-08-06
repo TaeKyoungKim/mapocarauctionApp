@@ -27,29 +27,32 @@ class MyCarsScreen extends Component {
     };
   };
 
-  refreshData = () => {
+  refreshData =()=>{
     this.setState({
       refreshing: true,
     });
 
-    setTimeout(() => {
-      this.setState({
-        vehicleListing: MOCK_LISTING,
-        refreshing: false,
-      });
-    }, 1000);
-    // fetch(
-    //   'http://localhost:3000/api/VehicleListing?filter={"include":"resolve"}'
-    // )
-    //   .then(r => r.json())
-    //   .then(result => {
-    //     console.log(result);
-    //     this.setState({
-    //       vehicleListing: result,
-    //       refreshing: false,
-    //     });
+    // setTimeout(() => {
+    //   this.setState({
+    //     vehicleListing: MOCK_LISTING,
+    //     refreshing: false,
     //   });
+      
+    // }, 1000);
+    fetch('http://13.124.6.135:3000/api/VehicleListing?filter={"include":"resolve"}')
+      .then(r => r.json())
+      .then(result => {
+        console.log(result);
+        this.setState({
+          vehicleListing: result,
+          refreshing: false,
+        })
+      })
+      .catch(error=>{
+        console.error(error);
+      })
   };
+  
   renderItem = ({ item }) => {
     return (
       <AuctionItem
